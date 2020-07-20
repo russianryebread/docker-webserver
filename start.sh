@@ -40,7 +40,7 @@ if [[ "${PRODUCTION}" == "1" ]]; then
     sed -i -e "s/clear_env = no/clear_env = yes/g" /etc/php7/php-fpm.d/www.conf
     sed -i -e "s/display_errors = On/display_errors = Off/g" /etc/php7/php.ini
 else
-    sed -i -e "s/;log_level = notice/log_level = notice/g" /etc/php7/php-fpm.conf
+    sed -i -e "s/;log_level = notice/log_level = debug/g" /etc/php7/php-fpm.conf
     sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf
 fi
 
