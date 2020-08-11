@@ -3,6 +3,11 @@ FROM nginx:1.17.5-alpine
 # MAINTAINER OF THE PACKAGE.
 LABEL maintainer="Ryan Hoshor <ryan@hoshor.me>"
 
+ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS="0" \
+    PHP_OPCACHE_MAX_ACCELERATED_FILES="10000" \
+    PHP_OPCACHE_MEMORY_CONSUMPTION="192" \
+    PHP_OPCACHE_MAX_WASTED_PERCENTAGE="10"
+
 # trust this project public key to trust the packages.
 ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
@@ -32,6 +37,7 @@ RUN apk --update --no-cache add \
         php-dom \
         php-json \
         php-mbstring \
+        php7-opcache \
         php-openssl \
         php-pdo \
         php-pdo_mysql \
